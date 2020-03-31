@@ -1,0 +1,15 @@
+# idea
+.idea/*
+out
+*.iml
+target
+classes
+
+# vscode
+.vscode
+.settings
+.classpath
+.project
+
+# macOS
+.DS_Store

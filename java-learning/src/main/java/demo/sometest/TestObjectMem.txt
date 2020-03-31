@@ -1,0 +1,17 @@
+main 中：
+this = TestOjbectMem@543
+
+ref1 中：
+int i = 2
+Val v = new Val() // TestOjbectMem$Val@545
+v.i = 3
+调用ref2方法，把v(@545)和i(2)传入
+
+ref2 中：形参v(@545)和i(2)
+v.i = 4  // v(@545)中的i = 4
+Var val = new Var() // TestObjectMem$Val@546，这里的val和v是两个对象
+v = val // v指向新的val对象
+
+ref2 调用完回到 ref1 中
+通过debug可以看到 ref1 中的 v 还是原来那个对象 @545
+在 ref 2 中改变的那个形参v，没有影响到实参v
