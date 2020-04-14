@@ -24,6 +24,7 @@
         <module>algorithm-learning</module>
         <module>data-structure-learning</module>
         <module>practise-learning</module>
+        <module>design-pattern-learning</module>
     </modules>
 
 
