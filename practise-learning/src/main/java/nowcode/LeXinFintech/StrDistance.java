@@ -15,10 +15,12 @@ import java.util.Scanner;
  */
 public class StrDistance {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        char[] str = scanner.nextLine().toCharArray();
-        char ch = scanner.nextLine().toCharArray()[0];
+        char[] str;
+        char ch;
+        try(Scanner scanner = new Scanner(System.in)){
+            str = scanner.nextLine().toCharArray();
+            ch = scanner.nextLine().toCharArray()[0];
+        }
         int[] result = new int[str.length];
 
         // 确定str中ch的位置

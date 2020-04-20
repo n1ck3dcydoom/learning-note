@@ -18,8 +18,11 @@ import java.util.Scanner;
  */
 public class RunBox {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String[] inputString = scanner.nextLine().split(" ");
+        String[] inputString;
+        try (Scanner scanner = new Scanner(System.in)) {
+            inputString = scanner.nextLine().split(" ");
+        }
+
         int m = Integer.parseInt(inputString[0]);
         int n = Integer.parseInt(inputString[1]);
 

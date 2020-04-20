@@ -35,9 +35,10 @@ import java.util.Scanner;
  **/
 public class _70_ClimbingStairs {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        System.out.println(solution(n));
+        try (Scanner scanner = new Scanner(System.in)) {
+            int n = scanner.nextInt();
+            System.out.println(solution(n));
+        }
     }
 
     /**
@@ -47,6 +48,16 @@ public class _70_ClimbingStairs {
      * @return 方法数
      */
     private static int solution(int n) {
-        return -1;
+        if (n <= 2) {
+            return n;
+        }
+        // 使用数组保存每一步的计算结果
+        int[] arr = new int[n + 1];
+        arr[1] = 1;
+        arr[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        return arr[n];
     }
 }

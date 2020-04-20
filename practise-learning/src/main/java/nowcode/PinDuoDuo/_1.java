@@ -31,11 +31,15 @@ import java.util.*;
  */
 public class _1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // 数组长度
-        int n = Integer.parseInt(scanner.nextLine());
-        String[] aStr = scanner.nextLine().split(" ");
-        String[] bStr = scanner.nextLine().split(" ");
+        int n;
+        String[] aStr;
+        String[] bStr;
+        try (Scanner scanner = new Scanner(System.in)) {
+            // 数组长度
+            n = Integer.parseInt(scanner.nextLine());
+            aStr = scanner.nextLine().split(" ");
+            bStr = scanner.nextLine().split(" ");
+        }
 
         List<Integer> aList = new ArrayList<>();
         List<Integer> bList = new ArrayList<>();

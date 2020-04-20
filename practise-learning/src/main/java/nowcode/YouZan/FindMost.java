@@ -15,9 +15,11 @@ import java.util.*;
  */
 public class FindMost {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        String line;
+        try (Scanner scanner = new Scanner(System.in)) {
+            line = scanner.nextLine();
+        }
 
-        String line = scanner.nextLine();
         line = line.substring(1, line.length() - 1);
         String[] array = line.split(",");
         Map<Integer, Integer> frequencyMap = new HashMap<>();

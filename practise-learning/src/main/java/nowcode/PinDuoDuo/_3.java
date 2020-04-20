@@ -37,15 +37,21 @@ import java.util.Scanner;
  */
 public class _3 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String[] first = scanner.nextLine().split(" ");
-        int n = Integer.parseInt(first[0]);
-        int d = Integer.parseInt(first[1]);
+
+        String[] first;
+        int n;
+        int d;
+        String[] temp;
+        try (Scanner scanner = new Scanner(System.in)) {
+            first = scanner.nextLine().split(" ");
+            n = Integer.parseInt(first[0]);
+            d = Integer.parseInt(first[1]);
+            temp = scanner.nextLine().split(" ");
+        }
 
         int[] bankIndex = new int[n];
         int[] bankMoney = new int[n];
         for (int i = 0; i < n; i++) {
-            String[] temp = scanner.nextLine().split(" ");
             bankIndex[i] = Integer.parseInt(temp[0]);
             bankMoney[i] = Integer.parseInt(temp[1]);
         }

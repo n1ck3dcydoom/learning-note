@@ -32,18 +32,19 @@ import java.util.Scanner;
  */
 public class _3_LengthOfLongestSubstring {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            String str = scanner.nextLine();
 
-        HashMap<Character, Integer> map = new HashMap<>();
-        int max = 0;
-        for (int i = 0, j = 0; j < str.length(); j++) {
-            if (map.containsKey(str.charAt(j)) && (map.get(str.charAt(j)) >= i)) {
-                i = map.get(str.charAt(j)) + 1;
+            HashMap<Character, Integer> map = new HashMap<>();
+            int max = 0;
+            for (int i = 0, j = 0; j < str.length(); j++) {
+                if (map.containsKey(str.charAt(j)) && (map.get(str.charAt(j)) >= i)) {
+                    i = map.get(str.charAt(j)) + 1;
+                }
+                max = Math.max(max, j - i + 1);
+                map.put(str.charAt(j), j);
             }
-            max = Math.max(max, j - i + 1);
-            map.put(str.charAt(j), j);
+            System.out.println(max);
         }
-        System.out.println(max);
     }
 }

@@ -3,7 +3,6 @@ package nowcode.WeiPinHui_A;
 import java.util.Scanner;
 import java.util.Stack;
 
-
 /**
  * Created by n!Ck
  * Date: 2019-02-21
@@ -19,9 +18,13 @@ import java.util.Stack;
 
 public class StringAdd {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String aStr = scanner.nextLine(); // 1101
-        String bStr = scanner.nextLine(); // 1100
+        String aStr;
+        String bStr;
+        try (Scanner scanner = new Scanner(System.in)) {
+            aStr = scanner.nextLine(); // 1101
+            bStr = scanner.nextLine(); // 1100
+        }
+
         int aInt = binary2dec(aStr);
         int bInt = binary2dec(bStr);
         int cInt = aInt + bInt;

@@ -10,14 +10,19 @@ import java.util.Scanner;
  */
 public class _3 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // 测试样例个数
-        int N = Integer.parseInt(scanner.nextLine());
-        int[] result = new int[N];
-        for (int i = 0; i < N; i++) {
+        int N;
+        int n;
+        String[] scoresLine;
+        try (Scanner scanner = new Scanner(System.in)) {
+            // 测试样例个数
+            N = Integer.parseInt(scanner.nextLine());
             // 参赛人数
-            int n = Integer.parseInt(scanner.nextLine());
-            String[] scoresLine = scanner.nextLine().split(" ");
+            n = Integer.parseInt(scanner.nextLine());
+            scoresLine = scanner.nextLine().split(" ");
+        }
+        int[] result=new int[N];
+
+        for (int i = 0; i < N; i++) {
             int[] scores = new int[n];
             int[] gifts = new int[n];
             for (int j = 0; j < n; j++) {
@@ -64,8 +69,8 @@ public class _3 {
                 result[i] += gifts[m];
             }
         }
-        for (int n : result) {
-            System.out.println(n);
+        for (int res : result) {
+            System.out.println(res);
         }
     }
 }

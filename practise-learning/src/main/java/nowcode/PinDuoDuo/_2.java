@@ -25,8 +25,10 @@ import java.util.Scanner;
  */
 public class _2 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine().toLowerCase();
+        String str;
+        try (Scanner scanner = new Scanner(System.in)) {
+            str = scanner.nextLine().toLowerCase();
+        }
 
         // 去重
         StringBuilder stringBuilder = new StringBuilder();

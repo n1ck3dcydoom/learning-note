@@ -30,9 +30,10 @@ import java.util.Scanner;
  **/
 public class _69_Sqrt {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int x = scanner.nextInt();
-        System.out.println(mySqrt(x));
+        try(Scanner scanner = new Scanner(System.in)){
+            int x = scanner.nextInt();
+            System.out.println(mySqrt(x));
+        }
     }
 
     private static int mySqrt(int x) {

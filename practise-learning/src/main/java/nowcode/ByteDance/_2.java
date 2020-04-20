@@ -34,21 +34,22 @@ import java.util.Scanner;
 public class _2 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        String[] strs = new String[n + 1];
-        for (int i = 0; i <= n; i++) {
-            strs[i] = scanner.nextLine();
-        }
-        String[] result = new String[n];
-        for (int i = 0; i < n; i++) {
-            result[i] = handleString(strs[i + 1].toCharArray());
-        }
-        for (String str : result) {
-            System.out.println(str);
+        try (Scanner scanner = new Scanner(System.in)) {
+            int n = scanner.nextInt();
+            String[] strs = new String[n + 1];
+            for (int i = 0; i <= n; i++) {
+                strs[i] = scanner.nextLine();
+            }
+            String[] result = new String[n];
+            for (int i = 0; i < n; i++) {
+                result[i] = handleString(strs[i + 1].toCharArray());
+            }
+            for (String str : result) {
+                System.out.println(str);
+            }
         }
     }
-
+    
     private static String handleString(char[] chars) {
 
         StringBuilder stringBuilder = new StringBuilder();

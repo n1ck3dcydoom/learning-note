@@ -13,9 +13,12 @@ import java.util.Scanner;
  */
 public class HandleCharArray {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        char[] text = scanner.nextLine().toCharArray();
+        char[] text;
+        try (Scanner scanner = new Scanner(System.in)) {
+            text = scanner.nextLine().toCharArray();
+        }
+
         Map<Character, Integer> chMap = new HashMap<>();
         char maxCh = '\0';
         int maxChCount = 1;

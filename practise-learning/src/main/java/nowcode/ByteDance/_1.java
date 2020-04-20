@@ -29,25 +29,26 @@ import java.util.Scanner;
  */
 public class _1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = 1024 - scanner.nextInt();
+        try (Scanner scanner = new Scanner(System.in)) {
+            int n = 1024 - scanner.nextInt();
 
-        int count = 0;
-        if (n / 64 > 0) {
-            count += n / 64;
-            n = n - (n / 64) * 64;
+            int count = 0;
+            if (n / 64 > 0) {
+                count += n / 64;
+                n = n - (n / 64) * 64;
+            }
+            if (n / 16 > 0) {
+                count += n / 16;
+                n = n - (n / 16) * 16;
+            }
+            if (n / 4 > 0) {
+                count += n / 4;
+                n = n - (n / 4) * 4;
+            }
+            if (n > 0) {
+                count += n;
+            }
+            System.out.println(count);
         }
-        if (n / 16 > 0) {
-            count += n / 16;
-            n = n - (n / 16) * 16;
-        }
-        if (n / 4 > 0) {
-            count += n / 4;
-            n = n - (n / 4) * 4;
-        }
-        if (n > 0) {
-            count += n;
-        }
-        System.out.println(count);
     }
 }
