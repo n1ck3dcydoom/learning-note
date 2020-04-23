@@ -80,6 +80,27 @@ public class _100_SameTree {
         return true;
     }
 
+    private static boolean traverseByFramework(TreeNode t1, TreeNode t2) {
+        // 一个为空，一个不为空，肯定不相等
+        if ((t1 == null && t2 != null) || (t1 != null && t2 == null)) {
+            return false;
+        }
+        if (t1 == null && t2 == null) {
+            return true;
+        }
+        if (!t1.val.equals(t2.val)) {
+            return false;
+        }
+        // 只要左右子树都相同，则两棵树相同
+        return traverseByFramework(t1.left, t2.left) && traverseByFramework(t1.right, t2.right);
+
+        // 访问treeNode.val  前序遍历
+        //        traverseByFramework(t1.left);
+        // 访问treeNode.val  中序遍历
+        //        traverseByFramework(t1.right);
+        // 访问treeNode.val  后序遍历
+    }
+
     /**
      * 中序遍历二叉树
      *
