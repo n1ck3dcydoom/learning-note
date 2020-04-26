@@ -89,7 +89,7 @@ public class _100_SameTree {
         if (t1 == null && t2 == null) {
             return true;
         }
-        if (!t1.val.equals(t2.val)) {
+        if (t1.val != t2.val) {
             return false;
         }
         // 只要左右子树都相同，则两棵树相同
