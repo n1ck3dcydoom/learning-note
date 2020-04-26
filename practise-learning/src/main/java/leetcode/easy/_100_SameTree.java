@@ -1,6 +1,7 @@
 package leetcode.easy;
 
 
+import leetcode.data.TreeNode;
 import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
@@ -127,15 +128,5 @@ public class _100_SameTree {
             result[i] = valList.get(i);
         }
         return result;
-    }
-}
-
-class TreeNode {
-    Integer val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(Integer x) {
-        this.val = x;
     }
 }

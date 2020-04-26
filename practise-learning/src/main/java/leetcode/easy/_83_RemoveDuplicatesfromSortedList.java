@@ -1,5 +1,7 @@
 package leetcode.easy;
 
+import leetcode.data.ListNode;
+
 /**
  * @author n1ck3dcydoom
  * @version 1.0
@@ -61,14 +63,5 @@ public class _83_RemoveDuplicatesfromSortedList {
             }
         }
         return head;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
     }
 }
