@@ -14,11 +14,11 @@ import leetcode.data.TreeNode;
  * 示例：
  * 给定二叉树 [3,9,20,null,null,15,7]，
  * <p>
- * 3
- * / \
- * 9  20
- * /  \
- * 15   7
+ *      3
+ *     / \
+ *    9  20
+ *   / \
+ *  15  7
  * 返回它的最大深度 3 。
  * <p>
  * 来源：力扣（LeetCode）
@@ -61,5 +61,28 @@ public class _104_MaximumDepthOfBinaryTree {
         traverseByFramework(t.right);
         temp--;
         // 后序遍历访问节点
+    }
+
+    /**
+     * 求一颗二叉树的深度，对于给定某一个根节点，其深度为左右子树中更深的度+1
+     * 即 H(n) = Max( H(n左子树) , H(n右子树)
+     * <p>
+     * 对于叶子节点，其深度为1
+     * null节点，其深度为0
+     *
+     * @param root 二叉树的根节点
+     * @return 二叉树的深度
+     */
+    private int getDepth(TreeNode root) {
+        // 遍历到了null节点，其深度为0
+        if (root == null) {
+            return 0;
+        }
+        // 找左子树的深度
+        int left = getDepth(root.left);
+        // 找右子树的深度
+        int right = getDepth(root.right);
+        // 返回左子树和右子树深度的最大值加1，即为当前root节点的深度
+        return Math.max(left, right) + 1;
     }
 }
