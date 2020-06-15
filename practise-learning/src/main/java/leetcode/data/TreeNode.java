@@ -12,7 +12,6 @@ public class TreeNode {
     public TreeNode right;
 
     public TreeNode() {
-
     }
 
     public TreeNode(int x) {
