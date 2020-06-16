@@ -8,7 +8,15 @@ import java.util.List;
 /**
  * @author zhanglei
  * @version 1.0
- * @description TODO
+ * @description 给定一个 N 叉树，返回其节点值的后序遍历。
+ * <p>
+ * 例如，给定一个 3叉树 :
+ *        1
+ *      / | \
+ *     3  2  4
+ *    / \
+ *   5   6
+ * 返回其后序遍历: [5,6,3,2,4,1].
  * @date 2020/6/16 0:46
  **/
 public class _590_NaryTreePostorderTraversal {
