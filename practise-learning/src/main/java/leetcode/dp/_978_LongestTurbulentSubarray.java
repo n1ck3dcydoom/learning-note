@@ -38,8 +38,8 @@ package leetcode.dp;
  **/
 public class _978_LongestTurbulentSubarray {
     public static void main(String[] args) {
-        int[] arr = new int[]{9, 4, 2, 10, 7, 8, 8, 1, 9};
-        System.out.println(maxTurbulenceSize(arr));
+        int[] arr = new int[]{0, 1, 1, 0, 1, 0, 1, 1, 0, 0};
+        System.out.println(maxTurbulenceSize0(arr));
     }
 
     /**
@@ -84,6 +84,57 @@ public class _978_LongestTurbulentSubarray {
             }
             max = Math.max(max, dp[i]);
         }
+        return max;
+    }
+
+    public static int maxTurbulenceSize0(int[] arr) {
+        if (arr == null) {
+            return 0;
+        }
+        int n = arr.length;
+        if (n <= 1) {
+            return n;
+        }
+        if (n == 2) {
+            return arr[0] == arr[1] ? 1 : 2;
+        }
+        // 标志位，判断前两个元素的上升或者下降情况
+        // flag = 1 表示前两个元素是上升
+        // flag = -1 表示前两个元素是下降
+        // flag = 0 表示前两个元素相等
+        // 用标志位的-1和1更替长度表示最长湍流数组的长度
+        int flag = Integer.compare(arr[1], arr[0]);
+        // 当前和前一个元素的上升或下降情况
+        int current = 0;
+        // 当前湍流数组的起点 (滑动窗口的左端，i是滑动窗口的右端)
+        int pos = 0;
+        // 湍流数组的最大长度
+        int max = 0;
+        for (int i = 2; i < n; i++) {
+            current = Integer.compare(arr[i], arr[i - 1]);
+            // 如果i和i-1相等，窗口左端调整到和右端重合
+            if (current == 0) {
+                pos = i;
+            }
+            // i-2和i-1的符号，和i-1和i的符号不异号
+            else if (Integer.compare(arr[i - 1], arr[i - 2]) * current >= 0) {
+                // 因为current一定不等于0，即使前面i-2和i-2相等，子湍流数组的长度也一定有2
+                // 移动左端口到右端口前一个位置
+                pos = i - 1;
+            }
+            // 如果异号，则左端口不动，计算当前子湍流数组的长度
+            max = Math.max(max, i - pos + 1);
+        }
+        //
+        //
+        //            if (flag == 0 && current == 0) {
+        //                pos = i;
+        //            } else if (flag * current >= 1) {
+        //                pos = i - 1;
+        //            }
+        //            max = Math.max(max, i - pos + 1);
+        //            // 更新flag
+        //            flag = current;
         return max;
     }
 }
