@@ -1,7 +1,5 @@
 package leetcode.dp.medium;
 
-import java.util.HashMap;
-
 /**
  * @author zhanglei
  * @version 1.0
@@ -70,7 +68,7 @@ public class _467_UniqueSubstringsInWraparoundString {
         // 以e结尾的连续子串有 'e' 'de' 'cde' 'bcde' 'abcde' 5个          abcde -> 15
         // 以f结尾的连续子串有 'f' 'df' 'edf' 'cdef' 'bcdef' 'abcdef'6个 abcdef -> 21
         // 那么对于连续字符串 abcdef 来说，他的所有不重复的连续字符子串就有
-        // 以a结尾，以b结尾... 以f结尾的连续子串之和 1+2+3+4+5+6 = 21g个
+        // 以a结尾，以b结尾... 以f结尾的连续子串之和 1+2+3+4+5+6 = 21个
 
         // 0 <= i <= 25
         // 第一步、定义dp[i] 表示以字母i(26字母表中顺序)结尾的连续子串和
@@ -113,8 +111,13 @@ public class _467_UniqueSubstringsInWraparoundString {
         // 更新了sum之后，还要把c2和c1的较大值重新赋值回去，以便于和c3、c4等等作比较
 
         // p的第一个字符已经当作初始值，从i=1，即第二个字符开始遍历p串
-        HashMap<Character, Integer> index = new HashMap<>(26);
-        index.put(p.charAt(0), dp[p.charAt(0) - 'a']);
+
+
+        // HashMap<Character, Integer> index = new HashMap<>(26);
+        int[] index = new int[26];
+        //index.put(p.charAt(0), dp[p.charAt(0) - 'a']);
+        index[p.charAt(0) - 'a'] = dp[p.charAt(0) - 'a']; // 初始化p串的第一个字符的索引表值
+
         int sum = dp[p.charAt(0) - 'a'];
         for (int i = 1; i < p.length(); i++) {
             // 如果i和i+1连续
