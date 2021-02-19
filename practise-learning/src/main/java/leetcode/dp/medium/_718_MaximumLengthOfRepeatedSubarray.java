@@ -30,6 +30,13 @@ package leetcode.dp.medium;
  * @date 2021/2/19 21:44
  **/
 public class _718_MaximumLengthOfRepeatedSubarray {
+
+    public static void main(String[] args) {
+        int[] A = new int[]{1, 2, 3, 2, 1};
+        int[] B = new int[]{3, 2, 1, 4, 7};
+        System.out.println(findLength3(A, B));
+    }
+
     public int findLength(int[] A, int[] B) {
         // 朴素dp思路
 
@@ -114,5 +121,121 @@ public class _718_MaximumLengthOfRepeatedSubarray {
             }
         }
         return res;
+    }
+
+    public static int findLength1(int[] A, int[] B) {
+        // 上述普通dp可以看作是一个填表过程
+        //   B 3 2 1 4 7
+        // A 1 0 0 1 0 0
+        //   2 0 1 0 0 0
+        //   3 1 0 0 0 0
+        //   2 0 2 0 0 0
+        //   1 0 0 3 0 0
+
+        // 从每次遍历A数组的时候可以发现，其实遍历当前行的时候，之和上一行的数据相关
+        // 参考 洛谷P1048 可以通过滚动数组优化空间复杂度到O(2)
+        int n = A.length;
+        int m = B.length;
+        int[][] dp = new int[2][m];
+
+        // 初始化第1行
+        for (int i = 0; i < m; i++) {
+            if (A[0] == B[i]) {
+                dp[0][i] = 1;
+            } else {
+                dp[0][i] = 0;
+            }
+        }
+
+        // 选择遍历
+        int res = 0;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (A[i] == B[j]) {
+                    if (j == 0) {
+                        dp[i % 2][j] = 1;
+                    } else {
+                        dp[i % 2][j] = dp[(i + 1) % 2][j - 1] + 1;
+                    }
+                    res = Math.max(res, dp[i % 2][j]);
+                } else {
+                    dp[i % 2][j] = 0;
+                }
+            }
+        }
+        return res;
+    }
+
+    public static int findLength2(int[] A, int[] B) {
+        // 从每次遍历A数组的时候可以发现，其实遍历当前行的时候，之和上一行的数据相关
+        // 参考 洛谷P1048 可以通过一维数组直接优化到O(1)
+        int n = A.length;
+        int m = B.length;
+        int[] dp = new int[m];
+
+        // 初始化第1行
+        for (int i = 0; i < m; i++) {
+            if (A[0] == B[i]) {
+                dp[i] = 1;
+            } else {
+                dp[i] = 0;
+            }
+        }
+        // 开始遍历
+        int res = 0;
+        for (int i = 1; i < n; i++) {
+            // 顺序遍历会覆盖上一次的记录，导致dp[j]=dp[j-1]+1中的dp[j-1]不再是上一行的数据
+            // 这里需要倒叙遍历B数组
+            for (int j = m - 1; j >= 0; j--) {
+                if (A[i] == B[j]) {
+                    if (j == 0) {
+                        dp[j] = 1;
+                    } else {
+                        dp[j] = dp[j - 1] + 1;
+                    }
+                    res = Math.max(res, dp[j]);
+                } else {
+                    dp[j] = 0;
+                }
+            }
+        }
+        return res;
+    }
+
+    public static int findLength3(int[] A, int[] B) {
+        // 滑动窗口
+        // 第一次：         1 2 3 2 1
+        //         3 2 1 4 7       3 2 1 4 7
+        // 第二次：       1 2 3 2 1
+        //         3 2 1 4 7
+        // 第三次：     1 2 3 2 1
+        //         3 2 1 4 7
+        // 第四次：   1 2 3 2 1
+        //         3 2 1 4 7
+        // 第五次： 1 2 3 2 1
+        //         3 2 1 4 7
+        // 第六次： 1 2 3 2 1
+        //           3 2 1 4 7
+        // 第七次： 1 2 3 2 1
+        //             3 2 1 4 7
+        // 第八次： 1 2 3 2 1
+        //               3 2 1 4 7
+        // 第九次： 1 2 3 2 1
+        //                 3 2 1 4 7
+
+        int n = A.length;
+        int m = B.length;
+
+        // 优先固定长的数组，从短的数组开始滑动，从短的尾部对齐长的头部 → 短的头部对齐长的尾部结束
+        if (n > m) {
+            // 固定A数组，滑动B数组
+            for (int i = m - 1; i >= 0; i++) {
+                // 计算重叠部分在A中的起始位置
+
+            }
+        } else {
+
+        }
+        return -1;
     }
 }
