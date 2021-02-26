@@ -73,7 +73,7 @@ public class _120_Triangle {
         list.add(l3);
         list.add(l4);
 
-        System.out.println(minimumTotal(list));
+        System.out.println(minimumTotal1(list));
     }
 
     public int minimumTotal0(List<List<Integer>> triangle) {
@@ -144,6 +144,47 @@ public class _120_Triangle {
         int res = dp[n - 1][0];
         for (int i = 1; i < m; i++) {
             res = Math.min(res, dp[n - 1][i]);
+        }
+        return res;
+    }
+
+    public static int minimumTotal1(List<List<Integer>> triangle) {
+        // 通过上面的朴素dp可以简单的发现，每次计算第i行的时候，只用到了第i-1行的结果
+        // 考虑把空间压缩到一维，每次计算完成之后写回一维数组
+
+        int n = triangle.size();
+        int m = triangle.get(n - 1).size();
+
+        int[] dp = new int[m];
+
+        // 初始值，只有第1个元素有值，就是顶点的权重
+        dp[0] = triangle.get(0).get(0);
+
+        // 遍历剩下的行
+        for (int i = 1; i < n; i++) {
+            // 当前层的权重列表
+            List<Integer> currentLayer = triangle.get(i);
+            // 遍历每一列
+            // 跟背包问题很相似，如果正序遍历，会导致当前行的数据提前写入了上一行，影响计算结果
+            for (int j = i; j >= 0; j--) {
+                // 考虑右边界情况
+                if (j == i) {
+                    dp[j] = dp[j - 1] + currentLayer.get(j);
+                }
+                // 考虑左边界
+                else if (j == 0) {
+                    dp[j] = dp[j] + currentLayer.get(j);
+                }
+                // 中间情况
+                else {
+                    dp[j] = Math.min(dp[j], dp[j - 1]) + currentLayer.get(j);
+                }
+            }
+        }
+        // 求最后一层的最小值即可
+        int res = dp[0];
+        for (int i = 1; i < m; i++) {
+            res = Math.min(res, dp[i]);
         }
         return res;
     }
