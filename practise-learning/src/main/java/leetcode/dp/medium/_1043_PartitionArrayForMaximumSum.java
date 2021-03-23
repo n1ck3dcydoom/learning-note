@@ -46,7 +46,7 @@ public class _1043_PartitionArrayForMaximumSum {
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 15, 7, 9, 2, 5, 10};
-        System.out.println(maxSumAfterPartitioning(arr, 3));
+        System.out.println(maxSumAfterPartitioning1(arr, 3));
     }
 
     public static int maxSumAfterPartitioning(int[] arr, int k) {
@@ -122,6 +122,37 @@ public class _1043_PartitionArrayForMaximumSum {
             max = Math.max(arr[i], max);
         }
         return max;
+    }
+
+    public static int maxSumAfterPartitioning1(int[] arr, int k) {
+        int n = arr.length;
+        int[] dp = new int[n];
+
+        // 初始值
+        dp[0] = arr[0];
+
+        // 遍历i
+        for (int i = 1; i < n; i++) {
+            // 用当前i的元素作为分段数组的起始最大值，后面倒序遍历j的时候会不断跟新这个最大值和对应的dp[i]
+            int tempMax = arr[i];
+            // 从i开始往前遍历k个元素，用j表示，直到j=i-k ，需要处理j==0的边界条件
+            for (int j = i; j > i - k; j--) {
+                // 更新中间最大值
+                tempMax = Math.max(tempMax, arr[j]);
+                // 更新中间dp[i]
+                // 如果j==0了，表示整个数组都作为k的分段子数组，直接跳出j的遍历
+                if (j == 0) {
+                    // 使用整个数组的最大值
+                    // 当前下标是i，数组的长度就是i+1
+                    dp[i] = Math.max(dp[i], tempMax * (i + 1));
+                    break;
+                } else {
+                    // 通过递推表达式计算dp[i]的结果
+                    dp[i] = Math.max(dp[i], dp[j - 1] + tempMax * (i - j + 1));
+                }
+            }
+        }
+        return dp[n - 1];
     }
 
 }
