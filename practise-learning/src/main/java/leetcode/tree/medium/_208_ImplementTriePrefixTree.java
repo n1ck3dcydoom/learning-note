@@ -91,38 +91,61 @@ public class _208_ImplementTriePrefixTree {
          * Returns if the word is in the trie.
          */
         public boolean search(String word) {
-            Trie p = this;
-            // 遍历输入字符串
-            for (char c : word.toCharArray()) {
-                // 如果遍历到某个字符的对应的路径的子节点不存在时，表明字典树中不含有这个字符串
-                if (p.childs[c - 'a'] == null) {
-                    return false;
-                }
-                // p指针移动指向当前字符后面的子节点字符
-                p = p.childs[c - 'a'];
-            }
-            // 如果遍历完输入串后，最后一个子节点并不是一条路径的终点，说明字典树里面也不含有这个字符串
-            // 否则字典树里含有当前输入串
-            return p.ended;
+            //            Trie p = this;
+            //            // 遍历输入字符串
+            //            for (char c : word.toCharArray()) {
+            //                // 如果遍历到某个字符的对应的路径的子节点不存在时，表明字典树中不含有这个字符串
+            //                if (p.childs[c - 'a'] == null) {
+            //                    return false;
+            //                }
+            //                // p指针移动指向当前字符后面的子节点字符
+            //                p = p.childs[c - 'a'];
+            //            }
+            //            // 如果遍历完输入串后，最后一个子节点并不是一条路径的终点，说明字典树里面也不含有这个字符串
+            //            // 否则字典树里含有当前输入串
+            //            return p.ended;
+            Trie p = searchPrefix(word);
+            // 返回最后找到的字典树节点，如果这个节点不为null，且这个节点是个路径的终点
+            // 则说明字典树里含有当前输入字符串
+            return p != null && p.ended;
         }
 
         /**
          * Returns if there is any word in the trie that starts with the given prefix.
          */
         public boolean startsWith(String prefix) {
+            //            Trie p = this;
+            //            // 前缀查找
+            //            for (char c : prefix.toCharArray()) {
+            //                // 如果输入前缀中不存在某个子节点，则直接返回fasle
+            //                if (p.childs[c - 'a'] == null) {
+            //                    return false;
+            //                }
+            //                // 指针后移
+            //                p = p.childs[c - 'a'];
+            //            }
+            //            // 如果遍历完输入前缀后都没有返回false，那么无论最后一个字符节点是否是一条路径的终点
+            //            // 都说明字典树含有当前输入前缀 (不一定是一个完整的字符串索引)
+            //            return true;
+            Trie p = this.searchPrefix(prefix);
+            // 返回最后找到的字典树节点，如果这个节点不为null，且这个节点是个路径的终点
+            // 无论这个节点是不是路径的终点，都说明字典树里含有输入前缀
+            return p != null;
+        }
+
+        private Trie searchPrefix(String prefix) {
             Trie p = this;
             // 前缀查找
             for (char c : prefix.toCharArray()) {
-                // 如果输入前缀中不存在某个子节点，则直接返回fasle
+                // 如果输入前缀中不存在某个子节点，返回null
                 if (p.childs[c - 'a'] == null) {
-                    return false;
+                    return null;
                 }
                 // 指针后移
                 p = p.childs[c - 'a'];
             }
-            // 如果遍历完输入前缀后都没有返回false，那么无论最后一个字符节点是否是一条路径的终点
-            // 都说明字典树含有当前输入前缀 (不一定是一个完整的字符串索引)
-            return true;
+            // 返回最后一个找到的字典树节点指针
+            return p;
         }
     }
 
