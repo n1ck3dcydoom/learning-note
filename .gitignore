@@ -14,3 +14,6 @@ temp
 
 # macOS
 .DS_Store
+
+# other
+*.stackdump
