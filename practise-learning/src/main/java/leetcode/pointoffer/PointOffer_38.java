@@ -1,4 +1,4 @@
-package leetcode.dfs.medium;
+package leetcode.pointoffer;
 
 import java.util.HashSet;
 
@@ -30,7 +30,7 @@ import java.util.HashSet;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * @date 2021/6/22 11:19
  **/
-public class PointOffer_38_LCOF {
+public class PointOffer_38 {
 
     public static void main(String[] args) {
         String s = "aac";
