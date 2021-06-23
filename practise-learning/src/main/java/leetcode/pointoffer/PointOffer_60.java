@@ -1,7 +1,7 @@
 package leetcode.pointoffer;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。
  * <p>
@@ -21,7 +21,7 @@ package leetcode.pointoffer;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * @date 2020/9/8 14:47
  **/
-public class PointOffer_60_LCOF {
+public class PointOffer_60 {
 
     public static void main(String[] args) {
         for (double d : twoSum(3)) {
