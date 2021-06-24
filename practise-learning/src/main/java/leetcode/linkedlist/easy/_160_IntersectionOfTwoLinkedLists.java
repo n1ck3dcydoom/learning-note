@@ -76,7 +76,26 @@ public class _160_IntersectionOfTwoLinkedLists {
         return null;
     }
 
-    public ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
+    public static void main(String[] args) {
+        ListNode n1 = new ListNode(4);
+        ListNode n2 = new ListNode(1);
+        n1.next = n2;
+        ListNode n3 = new ListNode(8);
+        n2.next = n3;
+        ListNode n4 = new ListNode(4);
+        n3.next = n4;
+        ListNode n5 = new ListNode(5);
+        n4.next = n5;
+
+        ListNode n6 = new ListNode(5);
+        ListNode n7 = new ListNode(6);
+        n6.next = n7;
+        n7.next = n2;
+
+        ListNode res = getIntersectionNode1(n1, n6);
+    }
+
+    public static ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;
         }
@@ -86,7 +105,7 @@ public class _160_IntersectionOfTwoLinkedLists {
             countA++;
         }
         int countB = 0;
-        for (ListNode p = headA; p != null; p = p.next) {
+        for (ListNode p = headB; p != null; p = p.next) {
             countB++;
         }
 
