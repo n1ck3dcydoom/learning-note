@@ -1,4 +1,4 @@
-package leetcode.search.medium;
+package leetcode.search.binary.medium;
 
 /**
  * @author n1ck3dcydoom
@@ -49,6 +49,24 @@ public class _704_BinarySearch {
             } else if (nums[mid] > target) {
                 // 同上，过滤掉已经搜索过的mid
                 r = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    private int search1(int[] nums, int target) {
+        int l = 0, r = nums.length;
+        // 搜索区间是[l, r)，结束时l==r，搜索区间是[l, l)搜索区间为空
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                // 搜索区间是[l, r)，已经搜索过mid，需要去掉mid
+                l = mid + 1;
+            } else if (nums[mid] > target) {
+                // 搜索区间是[l, r)，已经搜索过mid，需要去掉mid
+                r = mid;
             }
         }
         return -1;
