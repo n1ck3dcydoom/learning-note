@@ -18,7 +18,6 @@
     </properties>
 
     <modules>
-        <module>logback-learning</module>
         <module>markdown-note</module>
         <module>java-learning</module>
         <module>algorithm-learning</module>

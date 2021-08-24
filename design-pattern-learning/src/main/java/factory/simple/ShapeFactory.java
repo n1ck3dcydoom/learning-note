@@ -15,6 +15,7 @@ public class ShapeFactory {
                 return new RectShape();
             case "triangle":
                 return new TriangleShape();
+            default:
         }
         return null;
     }

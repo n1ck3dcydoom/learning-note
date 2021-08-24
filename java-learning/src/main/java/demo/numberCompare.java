@@ -23,7 +23,7 @@ public class numberCompare {
         double d1 = 41.0d;
         float f1 = 41.0f;
         int xi = 41;
-        long xl = 41l;
+        long xl = 41L;
         System.out.println(xi == d1); // true
         System.out.println(xi == f1); // true
         System.out.println(f1 == d1); // ture

@@ -87,7 +87,7 @@ public class EightQueen {
 
         // 看 track[row][column] 所在列有没有其他Queen
         for (int n = 0; n < row; n++) {
-            if (track[n][column].equals("Q")) {
+            if ("Q".equals(track[n][column])) {
                 return false;
             }
         }
@@ -95,13 +95,13 @@ public class EightQueen {
         // 看 track[row][column] 所在的两条对角线有没有其他Queen
         // 检查左上方对角线是否有其他Queen
         for (int n = row - 1, m = column - 1; n >= 0 && m >= 0; n--, m--) {
-            if (track[n][m].equals("Q")) {
+            if ("Q".equals(track[n][m])) {
                 return false;
             }
         }
         // 检查右上方对角线是否有其他Queen
         for (int n = row - 1, m = column + 1; n >= 0 && m < N; n--, m++) {
-            if (track[n][m].equals("Q")) {
+            if ("Q".equals(track[n][m])) {
                 return false;
             }
         }
