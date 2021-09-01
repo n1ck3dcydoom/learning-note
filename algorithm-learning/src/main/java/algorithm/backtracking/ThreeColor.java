@@ -20,8 +20,8 @@ public class ThreeColor {
         if (root == null) {
             return;
         }
-        list1.add(root.var);
-        target -= root.var;
+        list1.add(root.val);
+        target -= root.val;
         if (target == 0 && root.left == null && root.right == null) {
             list.add(new ArrayList<Integer>(list1));
         }
