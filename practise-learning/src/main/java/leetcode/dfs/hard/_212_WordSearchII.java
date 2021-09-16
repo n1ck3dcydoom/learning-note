@@ -1,6 +1,8 @@
 package leetcode.dfs.hard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -11,21 +13,10 @@ import java.util.List;
  **/
 public class _212_WordSearchII {
 
-    public static void main(String[] args) {
-        char[][] board = new char[][]{{'o', 'a', 'a', 'n'}, {'e', 't', 'a', 'e'}, {'i', 'h', 'k', 'r'}, {'i', 'f', 'l', 'v'}};
-        String[] words = new String[]{"oath", "pea", "eat", "rain"};
-        List<String> res = findWords(board, words);
-        if (!res.isEmpty() && res.size() > 0) {
-            for (String str : res) {
-                System.out.print(str + " ");
-            }
-        }
-    }
-
     // dfs深搜方向数组
-    private static int[][] way = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    private int[][] way = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-    public static List<String> findWords(char[][] board, String[] words) {
+    public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
 
         // 暴力搜索每个单词是否存在
@@ -47,7 +38,7 @@ public class _212_WordSearchII {
         return res;
     }
 
-    private static boolean dfs(char[][] board, String word, int index, int x, int y) {
+    private boolean dfs(char[][] board, String word, int index, int x, int y) {
         // 超出边界
         if (!inSide(board, x, y)) {
             return false;
@@ -79,7 +70,81 @@ public class _212_WordSearchII {
         return false;
     }
 
-    private static boolean inSide(char[][] board, int x, int y) {
+    private boolean inSide(char[][] board, int x, int y) {
         return (0 <= x && x < board.length) && (0 <= y && y < board[0].length) && board[x][y] != '$';
+    }
+
+    /**
+     * 使用前缀树优化
+     */
+    public List<String> findWords1(char[][] board, String[] words) {
+        // 使用set去重
+        HashSet<String> res = new HashSet<>();
+        // 遍历所有单词，构建字典树
+        Trie trie = new Trie();
+        for (String word : words) {
+            trie.insert(word);
+        }
+
+        // 检查每个格子
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                dfs(board, trie, i, j, res);
+            }
+        }
+        return new ArrayList<>(res);
+    }
+
+    private void dfs(char[][] board, Trie trie, int x, int y, HashSet<String> res) {
+        // 超出边界
+        if (!inSide(board, x, y)) {
+            return;
+        }
+        char c = board[x][y];
+        // 当前字符不在字典树当中
+        if (!trie.children.containsKey(c)) {
+            return;
+        }
+        // 如果达到了单词结尾
+        Trie t = trie.children.get(c);
+        if (!"".equals(t.word)) {
+            res.add(t.word);
+        }
+        // 标记当前访问
+        board[x][y] = '$';
+        // 检查四个方向
+        for (int i = 0; i < 4; i++) {
+            int[] wayTo = way[i];
+            dfs(board, t, x + wayTo[0], y + wayTo[1], res);
+        }
+        // 撤销选择
+        board[x][y] = c;
+    }
+
+    class Trie {
+        // 使用字符串直接保存前缀树中的单词，其他情况为空串
+        private String word;
+        private HashMap<Character, Trie> children;
+
+        public Trie() {
+            this.word = "";
+            this.children = new HashMap<>();
+        }
+
+        /**
+         * 插入一个单词到前缀树
+         */
+        public void insert(String word) {
+            Trie trie = this;
+            // 遍历每个字符
+            for (char c : word.toCharArray()) {
+                if (!trie.children.containsKey(c)) {
+                    trie.children.put(c, new Trie());
+                }
+                // 指向下一个前缀树节点
+                trie = trie.children.get(c);
+            }
+            trie.word = word;
+        }
     }
 }
