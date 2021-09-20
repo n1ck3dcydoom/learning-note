@@ -9,16 +9,25 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>java-learning</artifactId>
-    <version>1.0</version>
+    <artifactId>mybaits-core</artifactId>
+
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+
+        <!--mybatis-->
         <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.55.Final</version>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.7</version>
         </dependency>
+
+        <!--mysql jdbc-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+        </dependency>
+
 
     </dependencies>
 

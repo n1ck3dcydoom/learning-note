@@ -17,3 +17,6 @@ temp
 
 # other
 *.stackdump
+
+# logback
+LOG_HOME_IS_UNDEFINED

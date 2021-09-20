@@ -3,25 +3,25 @@
     <parent>
         <artifactId>learning-note</artifactId>
         <groupId>n1ck</groupId>
-        <version>1.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>algorithm-learning</artifactId>
-    <version>1.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
         <!-- 添加leetocde相关基本数据类型依赖 -->
         <dependency>
             <groupId>n1ck</groupId>
             <artifactId>practise-learning</artifactId>
-            <version>1.0</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>n1ck</groupId>
             <artifactId>common-learning</artifactId>
-            <version>1.0</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

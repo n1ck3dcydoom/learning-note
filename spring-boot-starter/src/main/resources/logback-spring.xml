@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false">
+
+    <contextName>learning-note</contextName>
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
+    <springProperty name="LOG_HOME" source="log.path"/>
+    <springProperty name="LOG_LEVEL" source="log.level"/>
+    <property name="appName" value="learning-note"/>
+
+    <!--appender为定制的日志输出器-->
+    <!--layout 为日志格式化输出的形式的形式-->
+    <!--控制台日志， 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度,%msg：日志消息，%n是换行符-->
+            <pattern>%red(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight([%level]) %green([%thread]) %magenta([%class{0}.%M\(\):%L]) - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!--RollingFileAppender：滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件-->
+
+
+    <!--&lt;!&ndash;文件日志， 按照每天生成日志文件 &ndash;&gt;-->
+    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--    <file>${LOG_HOME}/${appName}_%d{yyyy-MM-dd}.log</file>-->
+    <!--    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--        &lt;!&ndash;日志文件输出的文件名 &ndash;&gt;-->
+    <!--        <FileNamePattern>${LOG_HOME}/${appName}_%d{yyyy-MM-dd}.%i.log</FileNamePattern>-->
+    <!--        <MaxHistory>3</MaxHistory>-->
+    <!--        <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+    <!--            <MaxFileSize>50MB</MaxFileSize>-->
+    <!--        </TimeBasedFileNamingAndTriggeringPolicy>-->
+    <!--    </rollingPolicy>-->
+    <!--    <encoder>-->
+    <!--        <pattern>%red(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight([%level]) %green([%thread]) %magenta([%class{0}.%M]) - %msg%n</pattern>-->
+    <!--    </encoder>-->
+    <!--</appender>-->
+
+    <!--&lt;!&ndash; 定义日志文件异步输出 &ndash;&gt;-->
+    <!--<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">-->
+    <!--    &lt;!&ndash; 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 &ndash;&gt;-->
+    <!--    <discardingThreshold>0</discardingThreshold>-->
+
+    <!--    <includeCallerData>true</includeCallerData>-->
+    <!--    &lt;!&ndash; 更改默认的队列的深度,该值会影响性能.默认值为256 &ndash;&gt;-->
+    <!--    <queueSize>256</queueSize>-->
+    <!--    &lt;!&ndash; 添加附加的appender,最多只能添加一个 &ndash;&gt;-->
+    <!--    <appender-ref ref="FILE"/>-->
+    <!--</appender>-->
+
+    <!--myibatis log configure-->
+    <logger name="com.apache.ibatis" level="TRACE"/>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+
+
+    <!-- 日志输出级别设置，ref 属性为 appender 的name-->
+    <springProfile name="local">
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="STDOUT"/>
+            <!--<appender-ref ref="ASYNC"/>-->
+        </root>
+    </springProfile>
+
+</configuration>
