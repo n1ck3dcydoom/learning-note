@@ -19,7 +19,7 @@ public class Person {
     /**
      * 性别
      */
-    private int gender;
+    private int sex;
 
     public int getId() {
         return id;
@@ -45,11 +45,19 @@ public class Person {
         this.age = age;
     }
 
-    public int getGender() {
-        return gender;
+    public int getSex() {
+        return sex;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{id=" + this.getId()
+                + ", name=" + this.getName()
+                + ", age=" + this.getAge()
+                + ", sex=" + this.getSex() + "}";
     }
 }

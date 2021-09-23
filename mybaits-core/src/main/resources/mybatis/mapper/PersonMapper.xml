@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mybatis.mapper.PersonMapper">
+    <resultMap id="resultPerson" type="mybatis.entity.Person">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="sex" jdbcType="TINYINT" property="sex"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="resultPerson">
+        select id, name, age, sex
+        from person
+        where id = #{id}
+    </select>
+</mapper>
