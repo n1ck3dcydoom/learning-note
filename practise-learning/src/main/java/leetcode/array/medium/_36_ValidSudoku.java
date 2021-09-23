@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array.medium;
 
 public class _36_ValidSudoku {
 
