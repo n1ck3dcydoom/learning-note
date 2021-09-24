@@ -14,4 +14,13 @@
         from person
         where id = #{id}
     </select>
+
+    <select id="selectByIds">
+        select id, name, age, sex
+        from person where id in (
+        <foreach collection="ids" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </select>
 </mapper>

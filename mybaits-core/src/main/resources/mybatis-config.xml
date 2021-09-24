@@ -24,7 +24,10 @@
     </environments>
 
     <!--这里的mapper指的是xml的mapper文件，其路径需要和java类的Mapper接口路径保持一致-->
+    <!--这里如果单独配置扫描的mapper包路径，或者单独配置mapper.xml-->
+    <!--有顺序要求，mapper必须在package前面，而且mapper里面的resource(xml文件)和mapper(class类文件)只能存在一个-->
     <mappers>
+        <!--<mapper resource="mybatis/mapper/PersonMapper.xml"/>-->
         <package name="mybatis/mapper"/>
     </mappers>
 
