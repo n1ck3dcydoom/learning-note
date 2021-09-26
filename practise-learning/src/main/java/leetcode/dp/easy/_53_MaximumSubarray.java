@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.dp.easy;
 
 /**
  * @author zhanglei
@@ -46,6 +46,25 @@ public class _53_MaximumSubarray {
                 dp[i] = nums[i];
             }
             max = Math.max(max, dp[i]);
+        }
+        return max;
+    }
+
+    public static int maxSubArray1(int[] nums) {
+        // 考虑到dp[i]的状态只会由dp[i-1]转移过来
+        // 所以不需要定义dp数组，只需要一个变量pre即可
+
+        int n = nums.length;
+        if (n == 1) {
+            return nums[0];
+        }
+
+        int pre = nums[0];
+        int max = nums[0];
+
+        for (int i = 2; i <= n; i++) {
+            pre = pre < 0 ? nums[i - 1] : pre + nums[i - 1];
+            max = Math.max(max, pre);
         }
         return max;
     }
