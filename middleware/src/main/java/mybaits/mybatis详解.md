@@ -49,3 +49,7 @@ SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 
 跟进 `buildStatmentFromContext()` 方法里面去，一路顺藤摸瓜，看到下面这个方法，看看具体的 `MapperStatement` 对象是怎么被绑定到 `sql` 语句上面
 ![](./pic/config/Snipaste_2021-09-24_18-04-46.png)
+![](./pic/config/Snipaste_2021-09-27_22-04-30.png)
+
+### 获取SqlSession
+跟进 `SqlSessionFactory.openSession()` 方法
