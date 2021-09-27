@@ -53,3 +53,23 @@ SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 
 ### 获取SqlSession
 跟进 `SqlSessionFactory.openSession()` 方法
+![](./pic/sqlsession/Snipaste_2021-09-27_22-41-12.png)
+
+事务的隔离级别配置
+![](./pic/sqlsession/Snipaste_2021-09-27_22-44-44.png)
+
+可以看到 `mybaits` 是实现了两种不同的事务管理机制
+![](./pic/sqlsession/Snipaste_2021-09-27_22-42-35.png)
+
+* 使用 `JDBC Connection对象` 管理事务，里面包含完整的使用 `connection` 对象进行事务的提交、回滚和关闭
+* 使用 `ManagedTransaction` 管理事务，里面的提交和回滚不会做任何事，而是交给运行容器来管理事务的具体执行
+
+根据全局配置对象，和之前创建的事务对象，和执行器类型，初始化具体的 `SQL` 执行器，这里使用了 **装饰器设计模式**
+![](./pic/sqlsession/Snipaste_2021-09-27_23-18-09.png)
+
+最后将使用每一个拦截器 `interceptor` 来重新包装执行器，并返回最终的结果
+```java
+return (Executor) interceptorChain.pluginAll(executor)
+```
+
+### 获取mapper
