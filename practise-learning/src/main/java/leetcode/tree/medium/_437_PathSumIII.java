@@ -36,7 +36,7 @@ public class _437_PathSumIII {
         }
         preSum.addLast(preSum.peekLast() + root.val);
         int curSum = preSum.peekLast();
-        preSum.stream().forEach(i -> i - ro);
+//        preSum.stream().forEach(i -> i - ro);
         for (int sum : preSum) {
             if (curSum - sum == targetSum) {
                 res++;
