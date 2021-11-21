@@ -1,7 +1,7 @@
 package leetcode.dp.medium;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description leetcode
  * 附近的家居城促销，你买回了一直心仪的可调节书架，打算把自己的书都整理到新的书架上。

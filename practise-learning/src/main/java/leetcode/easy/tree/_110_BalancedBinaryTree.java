@@ -3,7 +3,7 @@ package leetcode.easy.tree;
 import leetcode.data.TreeNode;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 给定一个二叉树，判断它是否是高度平衡的二叉树。
  * <p>

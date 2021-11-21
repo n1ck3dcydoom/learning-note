@@ -5,7 +5,7 @@ import leetcode.data.TreeNode;
 import java.util.HashSet;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description TODO
  * @date 2020/6/17 15:54

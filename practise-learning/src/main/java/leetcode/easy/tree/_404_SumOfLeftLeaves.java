@@ -3,7 +3,7 @@ package leetcode.easy.tree;
 import leetcode.data.TreeNode;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 计算给定二叉树的所有左叶子之和。
  * <p>

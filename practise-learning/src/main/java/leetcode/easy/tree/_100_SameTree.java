@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 给定两个二叉树，编写一个函数来检验它们是否相同。
  *

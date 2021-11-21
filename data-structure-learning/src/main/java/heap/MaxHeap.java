@@ -1,7 +1,7 @@
 package heap;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description zl
  * 大顶堆:

@@ -1,7 +1,7 @@
 package leetcode.medium;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 有N个网络节点，标记为1到N。
  * <p>

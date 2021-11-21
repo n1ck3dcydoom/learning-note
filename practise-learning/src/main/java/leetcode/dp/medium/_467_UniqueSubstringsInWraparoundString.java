@@ -1,7 +1,7 @@
 //package leetcode.dp.medium;
 //
 ///**
-// * @author zhanglei
+// * @author n1ck3dcydoom
 // * @version 1.0
 // * @description leetcode
 // * 把字符串 s 看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以 s 看起来是这样的："...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....". 

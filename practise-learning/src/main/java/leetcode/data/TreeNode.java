@@ -1,7 +1,7 @@
 package leetcode.data;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description TODO
  * @date 2020/4/26 23:55

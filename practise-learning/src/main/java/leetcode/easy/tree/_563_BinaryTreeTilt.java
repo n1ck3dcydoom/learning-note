@@ -3,7 +3,7 @@ package leetcode.easy.tree;
 import leetcode.data.TreeNode;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 给定一个二叉树，计算整个树的坡度。
  *

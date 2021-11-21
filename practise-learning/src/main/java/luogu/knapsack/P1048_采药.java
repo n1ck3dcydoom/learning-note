@@ -1,7 +1,7 @@
 package luogu.knapsack;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description luogu
  * https://www.luogu.com.cn/problem/P1048

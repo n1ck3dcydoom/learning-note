@@ -3,7 +3,7 @@ package leetcode.easy.array;
 import java.util.Arrays;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description TODO
  * @date 2020/7/21 19:37

@@ -1,7 +1,7 @@
 package luogu;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 题目背景
  * <p>

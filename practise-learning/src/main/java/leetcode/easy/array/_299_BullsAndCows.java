@@ -1,7 +1,7 @@
 package leetcode.easy.array;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 你在和朋友一起玩 猜数字（Bulls and Cows）游戏，该游戏规则如下：
  *

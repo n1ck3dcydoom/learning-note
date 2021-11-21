@@ -1,7 +1,7 @@
 package leetcode.dp;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description TODO
  * @date 2021/1/9 23:45

@@ -1,7 +1,7 @@
 package leetcode.easy.array;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 给定一个非负整数数组，你最初位于数组的第一个位置。
  * <p>

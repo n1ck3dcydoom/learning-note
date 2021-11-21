@@ -3,7 +3,7 @@ package luogu.knapsack;
 import java.util.Scanner;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description luogu
  * @date 2021/2/22 21:59

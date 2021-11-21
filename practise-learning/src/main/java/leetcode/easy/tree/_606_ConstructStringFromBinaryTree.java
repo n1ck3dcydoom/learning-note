@@ -3,7 +3,7 @@ package leetcode.easy.tree;
 import leetcode.data.TreeNode;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 你需要采用前序遍历的方式，将一个二叉树转换成一个由括号和整数组成的字符串。
  *

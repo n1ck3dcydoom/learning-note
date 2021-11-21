@@ -1,7 +1,7 @@
 package leetcode.easy.array;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 有一堆石头，每块石头的重量都是正整数。
  * <p>

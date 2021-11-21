@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description leetcode
  * 给你一个整数数组 nums，请你找出并返回能被三整除的元素最大和。

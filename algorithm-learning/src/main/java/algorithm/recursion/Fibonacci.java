@@ -3,7 +3,7 @@ package algorithm.recursion;
 import utils.TimeUtil;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 求斐波那契数列
  * @date 2020/5/12 20:08

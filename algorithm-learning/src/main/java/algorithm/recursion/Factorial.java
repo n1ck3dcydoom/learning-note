@@ -3,7 +3,7 @@ package algorithm.recursion;
 import utils.TimeUtil;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 求n的阶乘
  * @date 2020/5/12 19:39

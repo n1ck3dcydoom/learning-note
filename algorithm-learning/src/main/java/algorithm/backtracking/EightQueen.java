@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 八皇后问题
  * 给定一个 N x N 的棋盘，求 N 个皇后互相不受影响的放置方法

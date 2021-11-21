@@ -1,7 +1,7 @@
 package leetcode.easy.array;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description TODO
  * @date 2020/7/7 17:50

@@ -3,7 +3,7 @@ package leetcode.presum.medium;
 import java.util.HashMap;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description leetcode
  * 给你一个整数数组 nums 和一个整数 k。

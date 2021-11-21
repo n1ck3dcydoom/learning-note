@@ -3,7 +3,7 @@ package leetcode.easy.tree;
 import leetcode.data.TreeNode;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
  * <p>

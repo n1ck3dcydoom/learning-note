@@ -1,7 +1,7 @@
 package leetcode.dp.medium;
 
 /**
- * @author zhanglei
+ * @author n1ck3dcydoom
  * @version 1.0
  * @description leetcode
  * <p>

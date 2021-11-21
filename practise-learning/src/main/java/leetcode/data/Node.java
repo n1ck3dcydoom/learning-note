@@ -2,12 +2,6 @@ package leetcode.data;
 
 import java.util.List;
 
-/**
- * @author zhanglei
- * @version 1.0
- * @description TODO
- * @date 2020/6/16 0:31
- **/
 public class Node {
     public int val;
     public List<Node> children;
