@@ -1,6 +1,6 @@
-package daimasuixianglu._2_array;
+package daimasuixianglu._1_array;
 
-public class _2_RemoveDuplicatesFromSortedArray {
+public class _7_RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
         // int[] nums = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };

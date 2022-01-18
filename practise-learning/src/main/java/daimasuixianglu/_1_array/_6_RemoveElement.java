@@ -1,6 +1,6 @@
-package daimasuixianglu._2_array;
+package daimasuixianglu._1_array;
 
-public class _1_RemoveElement {
+public class _6_RemoveElement {
 
     public static void main(String[] args) {
         int[] n1 = new int[]{3, 2, 2, 2, 0, 4, 5, 2, 1};

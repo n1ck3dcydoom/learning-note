@@ -1,6 +1,6 @@
 package daimasuixianglu._2_array;
 
-public class _5_SquaresSortedArray {
+public class _10_SquaresSortedArray {
 
     public static void main(String[] args) {
         int[] nums = new int[] { -4, -1, 0, 3, 10 };
