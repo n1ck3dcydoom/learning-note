@@ -1,9 +1,9 @@
-package daimasuixianglu._3_array;
+package daimasuixianglu._1_array;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class _3_MinimumWindowSubstring {
+public class _13_MinimumWindowSubstring {
 
     public static void main(String[] args) {
         String s = "ADOBECODEBANC";

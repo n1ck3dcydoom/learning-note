@@ -1,4 +1,4 @@
-package daimasuixianglu._3_array;
+package daimasuixianglu._1_array;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
  * Description:
  */
 
-public class _2_FruitIntoBaskets {
+public class _12_FruitIntoBaskets {
 
     public static void main(String[] args) {
         int[] fruits = new int[]{3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4};

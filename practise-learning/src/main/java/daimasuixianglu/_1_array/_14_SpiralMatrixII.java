@@ -1,6 +1,6 @@
-package daimasuixianglu._3_array;
+package daimasuixianglu._1_array;
 
-public class _4_SpiralMatrixII {
+public class _14_SpiralMatrixII {
 
     public static void main(String[] args) {
         int[][] res = generateMatrix(7);

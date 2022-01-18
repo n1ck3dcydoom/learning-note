@@ -1,6 +1,6 @@
-package daimasuixianglu._3_array;
+package daimasuixianglu._1_array;
 
-public class _1_MinimumSizeSubarraySum {
+public class _11_MinimumSizeSubarraySum {
 
     public static void main(String[] args) {
         int[] nums = new int[] { 1, 2, 3, 4, 5 };

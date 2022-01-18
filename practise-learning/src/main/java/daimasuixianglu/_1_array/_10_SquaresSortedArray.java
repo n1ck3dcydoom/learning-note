@@ -1,4 +1,4 @@
-package daimasuixianglu._2_array;
+package daimasuixianglu._1_array;
 
 public class _10_SquaresSortedArray {
 
