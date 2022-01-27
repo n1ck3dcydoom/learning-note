@@ -1,4 +1,4 @@
-package daimasuixianglu._4_StackAndQueue;
+package daimasuixianglu._5_stackAndQueue;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
