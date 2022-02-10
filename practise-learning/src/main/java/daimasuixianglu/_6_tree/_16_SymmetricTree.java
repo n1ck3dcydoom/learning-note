@@ -1,7 +1,7 @@
 package daimasuixianglu._6_tree;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class _16_SymmetricTree {
 
@@ -46,7 +46,7 @@ public class _16_SymmetricTree {
             return true;
         }
         // bfs搜索
-        Deque<TreeNode> queue = new ArrayDeque<>();
+        Deque<TreeNode> queue = new LinkedList<>();
         // 左右子树都先加入队列
         queue.addLast(root.left);
         queue.addLast(root.right);
