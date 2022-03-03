@@ -22,7 +22,7 @@ public class _26_LongestIncreasingSubsequence {
         // 考虑只有第0个数的情况，此时的最长上升子序列就是nums[0]本身，长度为1
         dp[0] = 1;
 
-        int res = Integer.MIN_VALUE;
+        int res = dp[0];
         for (int i = 1; i < n; i++) {
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
