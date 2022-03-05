@@ -1,5 +1,8 @@
 package redis.面试场景.Redis基本应用场景;
 
+import org.redisson.api.RLock;
+import org.redisson.redisnode.RedissonSingleNode;
+
 import java.util.LinkedHashMap;
 
 /**
@@ -16,5 +19,7 @@ public class Main {
         cache.put("t", "test");
         cache.put("a", "apple");
         System.out.println(cache.size());
+
+        RLock lock=
     }
 }
