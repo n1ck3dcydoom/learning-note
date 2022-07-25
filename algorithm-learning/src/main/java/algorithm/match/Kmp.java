@@ -8,8 +8,8 @@ package algorithm.match;
  */
 public class Kmp {
     public static void main(String[] args) {
-        String searchStr = "BBC ABCDAB ABCDABCDABDE";
-        String patternStr = "ABCDABD";
+        String searchStr = "baabbaabaa";
+        String patternStr = "baabbaabaa";
         System.out.println(KMP(searchStr, patternStr));
     }
 
