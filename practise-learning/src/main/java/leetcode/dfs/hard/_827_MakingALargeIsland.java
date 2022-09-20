@@ -2,6 +2,8 @@ package leetcode.dfs.hard;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @version 1.0
@@ -38,93 +40,82 @@ import java.util.HashSet;
  **/
 public class _827_MakingALargeIsland {
 
+    // 上下左右
+    private static int[][] ways = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    // 使用 map 记录每个岛屿
+    private static Map<Integer, Integer> map = new HashMap<>();
+
     public static void main(String[] args) {
-        int[][] grid = new int[][]{{1, 0}, {0, 1}};
-        System.out.println(largestIsland(grid));
+        System.out.println(largestIsland(new int[][]{{1, 1}, {1, 0}}));
     }
 
     public static int largestIsland(int[][] grid) {
+        // 首先统计所有岛屿的面积,记录下构成岛屿的每个陆地的映射关系,方便后面查找
+        int m = grid.length;
+        int n = grid[0].length;
+        boolean[][] visited = new boolean[m][n];
 
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
-
-        int n = grid.length;
-        int m = grid[0].length;
-
-        // 用于保存编号为k的岛屿，面积为s(k)
+        // 为了区分 0 和 1,使用 2 开始记号
         int k = 2;
-        HashMap<Integer, Integer> areaMap = new HashMap<>();
-        // 最大面积
-        int res = 0;
-        // 遍历所有陆地，找到所有岛屿，并且标记岛屿的面积
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        // 记录岛屿的最大面积
+        int max = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                // 仅查找陆地
                 if (grid[i][j] == 1) {
-                    int temp = dfs(grid, i, j, k);
-                    res = Math.max(res, temp);
-                    areaMap.put(k++, temp);
+                    int area = dfs(grid, visited, i, j, k);
+                    map.put(k++, area);
+                    max = Math.max(max, area);
                 }
             }
         }
-        // 遍历所有海洋，找到每个与岛屿相邻的海洋，并且计算填充当前海洋后，连接的新岛屿的最大面积
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+
+        int res = 0;
+        // 遍历所有海洋
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 0) {
-                    // 只找与岛屿相邻的海洋，孤独的海洋就不重复计算了
-                    // 判断海洋的四个方向是否和岛屿相邻，填海之后的新岛屿面积等于相邻的所有种类的岛屿面积之和+1，重复相邻的只计算一次
-                    HashSet<Integer> islandSet = new HashSet<>();
-
                     int temp = 1;
-
-                    // 上
-                    if (arrivedSide(grid, i - 1, j) && grid[i - 1][j] != 0 && !islandSet.contains(grid[i - 1][j])) {
-                        islandSet.add(grid[i - 1][j]);
-                        temp += areaMap.get(grid[i - 1][j]);
-                    }
-                    // 下
-                    if (arrivedSide(grid, i + 1, j) && grid[i + 1][j] != 0 && !islandSet.contains(grid[i + 1][j])) {
-                        islandSet.add(grid[i + 1][j]);
-                        temp += areaMap.get(grid[i + 1][j]);
-                    }
-                    // 左
-                    if (arrivedSide(grid, i, j - 1) && grid[i][j - 1] != 0 && !islandSet.contains(grid[i][j - 1])) {
-                        islandSet.add(grid[i][j - 1]);
-                        temp += areaMap.get(grid[i][j - 1]);
-                    }
-                    // 右
-                    if (arrivedSide(grid, i, j + 1) && grid[i][j + 1] != 0 && !islandSet.contains(grid[i][j + 1])) {
-                        islandSet.add(grid[i][j + 1]);
-                        temp += areaMap.get(grid[i][j + 1]);
+                    Set<Integer> set = new HashSet<>();
+                    for (int l = 0; l < 4; l++) {
+                        int[] way = ways[l];
+                        int xx = i + way[0];
+                        int yy = j + way[1];
+                        if (inSide(grid, xx, yy) && !set.contains(grid[xx][yy])) {
+                            temp += map.getOrDefault(grid[xx][yy], 0);
+                            set.add(grid[xx][yy]);
+                        }
                     }
                     res = Math.max(res, temp);
                 }
             }
         }
-        return res;
+        return Math.max(max, res);
     }
 
-    private static int dfs(int[][] grid, int i, int j, int k) {
-        // 超出边界了，面积为0
-        if (!arrivedSide(grid, i, j)) {
+    private static int dfs(int[][] grid, boolean[][] visited, int x, int y, int k) {
+        // 超出边界或者已经访问过
+        if (!inSide(grid, x, y) || visited[x][y] || grid[x][y] == 0) {
             return 0;
         }
-        // 不是陆地，面积为0
-        if (grid[i][j] != 1) {
-            return 0;
+        // 将当前标记为 visited
+        visited[x][y] = true;
+        // 将当前陆地标记为岛屿编号 k
+        grid[x][y] = k;
+        // 从四个方向上计算岛屿面积
+        int area = 1;
+        for (int i = 0; i < 4; i++) {
+            int[] way = ways[i];
+            int xx = x + way[0];
+            int yy = y + way[1];
+            area += dfs(grid, visited, xx, yy, k);
         }
-        // 标记当前陆地已经被访问过，用k值不同区分不同的岛屿
-        grid[i][j] = k;
-
-        // 递归找到岛屿的所有陆地，计算面积，递归一定从陆地开始，有初始值1
-        return 1 + dfs(grid, i + 1, j, k) + dfs(grid, i - 1, j, k) + dfs(grid, i, j + 1, k) + dfs(grid, i, j - 1, k);
+        return area;
     }
 
-    /**
-     * 当前网格(i,j)处于grid的范围内，返回true
-     * 否则返回false
-     */
-    private static boolean arrivedSide(int[][] grid, int i, int j) {
-        return (0 <= i && i < grid.length) && (0 <= j && j < grid[0].length);
+    private static boolean inSide(int[][] grid, int x, int y) {
+        int m = grid.length;
+        int n = grid[0].length;
+        return 0 <= x && x < m && 0 <= y && y < n;
     }
 }
